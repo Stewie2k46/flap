@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.9
+    commands:
+      - pip install pyinstaller
+
+  build:
+    commands:
+      - pyinstaller --onefile --windowed flappy_bird.py
+
+  post_build:
+    commands:
+      - echo "Build completed successfully."
+      - ls dist/  # List the contents of the dist directory to verify the .exe file creation
+
+artifacts:
+  files:
+    - dist/*
+  discard-paths: yes
